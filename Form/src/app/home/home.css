@@ -1,0 +1,204 @@
+/* Base Styles */
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.home-container {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+/* Content Section */
+.content {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.content h2 {
+  color: #ffffff;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.content h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #555;
+  margin: 1rem auto;
+}
+
+.content p {
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+/* Resources & Guides Sections */
+.resources,
+.guides {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resources:hover,
+.guides:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.resources h3,
+.guides h3 {
+  color: #fff;
+  margin-top: 0;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+/* Lists */
+.resources-list,
+.list-container {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.resources-list li,
+.list-container li {
+  flex: 1 1 300px;
+}
+
+.resources-list a,
+.list-container a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #ccc;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+  transition: all 0.3s ease;
+}
+
+.resources-list a:hover,
+.list-container a:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.resources-list a::before,
+.list-container a::before {
+  content: "→";
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-10px);
+}
+
+.resources-list a:hover::before,
+.list-container a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Icons */
+.fas,
+.fab {
+  width: 20px;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #444;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.footer p {
+  margin-bottom: 1.5rem;
+  color: #888;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  color: #777;
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1.5rem;
+  }
+
+  .resources,
+  .guides {
+    padding: 1.5rem;
+  }
+
+  .resources-list,
+  .list-container {
+    flex-direction: column;
+  }
+
+  .resources-list li,
+  .list-container li {
+    flex: 1 1 100%;
+  }
+}

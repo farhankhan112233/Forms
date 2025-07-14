@@ -2,7 +2,7 @@
   <div class="heading"><h2>Registration Form</h2></div>
   <div class="flex-row">
     <div class="form-field">
-      <label for="f">First Name: </label>
+      <label class="label-color" for="f">First Name: </label>
       <input
         id="f"
         type="text"
@@ -23,7 +23,7 @@
         </div>
       </ng-container>
       <div class="form-field">
-        <label for="ln">Last Name: </label>
+        <label class="label-color" for="ln">Last Name: </label>
         <input
           id="ln"
           type="text"
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="two-col">
-    <label for="user">Username: </label>
+    <label class="label-color" for="user" class="label-color">Username: </label>
     <input type="text" id="user" formControlName="userName" />
     <div class="alert">
       <ng-container *ngIf="registrationForm.get('userName') as username">
@@ -49,16 +49,16 @@
   </div>
 
   <div class="flex-row">
-    <label>Gender: </label>
+    <label class="label-color"> Gender: </label>
     <input type="radio" id="m" value="male" formControlName="gender" />
-    <label for="m">Male</label>
+    <label class="label-color" for="m">Male</label>
     <input type="radio" value="female" formControlName="gender" id="fm" />
-    <label for="fm">Female</label>
+    <label class="label-color" for="fm">Female</label>
     <input type="radio" value="other" id="o" formControlName="gender" />
-    <label for="o">Other</label>
+    <label class="label-color" for="o">Other</label>
   </div>
   <div class="two-col">
-    <label for="mail">Email: </label>
+    <label class="label-color" for="mail">Email: </label>
     <input type="email" id="mail" formControlName="email" placeholder="Email" />
     <div class="alert">
       <ng-container *ngIf="registrationForm.get('email') as email">
@@ -73,7 +73,7 @@
   </div>
 
   <div class="two-col">
-    <label for="date">Date of birth: </label>
+    <label class="label-color" for="date">Date of birth: </label>
     <input type="date" id="date" formControlName="DOB" />
     <div class="alert">
       <ng-container *ngIf="registrationForm.get('DOB') as DOB">
@@ -90,7 +90,7 @@
     <h3>Address</h3>
 
     <div class="form-field">
-      <label for="Street">Street: </label>
+      <label class="label-color" for="Street">Street: </label>
       <input type="text" formControlName="street" id="Street" />
       <ng-container *ngIf="registrationForm.get('address.street') as street">
         <div
@@ -103,7 +103,7 @@
     </div>
 
     <div class="form-field">
-      <label for="City">City: </label>
+      <label class="label-color" for="City">City: </label>
       <input type="text" formControlName="city" id="City" />
       <ng-container *ngIf="registrationForm.get('address.city') as city">
         <div class="error" *ngIf="city.touched && city.hasError('required')">
@@ -113,7 +113,7 @@
     </div>
 
     <div class="form-field">
-      <label for="count">Country: </label>
+      <label class="label-color" for="count">Country: </label>
       <input type="text" formControlName="country" id="count" />
       <ng-container *ngIf="registrationForm.get('address.country') as country">
         <div
@@ -126,7 +126,7 @@
     </div>
 
     <div class="form-field">
-      <label for="State">State: </label>
+      <label class="label-color" for="State">State: </label>
       <select class="st" id="State" formControlName="state">
         <option disabled selected>Choose...</option>
         <option value="Kpk">KPK</option>
@@ -142,7 +142,7 @@
     </div>
     <br />
 
-    <label for="zip">Zip Code: </label>
+    <label class="label-color" for="zip">Zip Code: </label>
     <input
       type="number"
       formControlName="zip"
@@ -151,7 +151,7 @@
     />
   </div>
   <div class="two-col">
-    <label for="phone">Phone: </label>
+    <label class="label-color" for="phone">Phone: </label>
     <input
       type="text"
       id="phone"
@@ -172,7 +172,7 @@
   </div>
   <div class="two-col">
     <input id="terms" type="checkbox" value="true" formControlName="checkbox" />
-    <label for="terms"
+    <label class="label-color" for="terms"
       ><a href="https://www.google.com" target="_blank"
         >Terms and Conditions</a
       ></label

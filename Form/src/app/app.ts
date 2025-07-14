@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { Header } from './header/header';
+import { Footer } from './footer/footer';
+import { RouterOutlet } from '@angular/router';
 
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-
-import { ProfileEditor } from './profile-editor/profile-editor';
 @Component({
   selector: 'app-root',
-  imports: [ReactiveFormsModule, ProfileEditor],
+  imports: [Header, Footer, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
