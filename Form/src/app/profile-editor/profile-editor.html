@@ -1,0 +1,192 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div class="heading"><h2>Registration Form</h2></div>
+  <div class="flex-row">
+    <div class="form-field">
+      <label for="f">First Name: </label>
+      <input
+        id="f"
+        type="text"
+        placeholder="FirstName"
+        formControlName="firstName"
+      />
+
+      <ng-container *ngIf="registrationForm.get('firstName') as firstName">
+        <div *ngIf="firstName.invalid && firstName.touched">
+          <div class="alert">
+            <div *ngIf="firstName.hasError('required')">
+              <small>*Required</small>
+            </div>
+            <div *ngIf="firstName.hasError('minlength')">
+              <small>*Name must be above 4 characters</small>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="form-field">
+        <label for="ln">Last Name: </label>
+        <input
+          id="ln"
+          type="text"
+          placeholder="Optional"
+          formControlName="lastName"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="two-col">
+    <label for="user">Username: </label>
+    <input type="text" id="user" formControlName="userName" />
+    <div class="alert">
+      <ng-container *ngIf="registrationForm.get('userName') as username">
+        <div *ngIf="username.hasError('required') && username.touched">
+          <small>*Required</small>
+        </div>
+        <div *ngIf="username.hasError('checkUsername')">
+          <small>*Username is taken</small>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="flex-row">
+    <label>Gender: </label>
+    <input type="radio" id="m" value="male" formControlName="gender" />
+    <label for="m">Male</label>
+    <input type="radio" value="female" formControlName="gender" id="fm" />
+    <label for="fm">Female</label>
+    <input type="radio" value="other" id="o" formControlName="gender" />
+    <label for="o">Other</label>
+  </div>
+  <div class="two-col">
+    <label for="mail">Email: </label>
+    <input type="email" id="mail" formControlName="email" placeholder="Email" />
+    <div class="alert">
+      <ng-container *ngIf="registrationForm.get('email') as email">
+        <div *ngIf="email.hasError('required') && email.touched">
+          <small>*Required</small>
+        </div>
+        <div *ngIf="email.hasError('email') && email.touched">
+          <small>*Email Invalid</small>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <label for="date">Date of birth: </label>
+    <input type="date" id="date" formControlName="DOB" />
+    <div class="alert">
+      <ng-container *ngIf="registrationForm.get('DOB') as DOB">
+        <div class="alert" *ngIf="DOB.touched && DOB.hasError('isUnderAge')">
+          <small>*Age Must be Above 18</small>
+        </div>
+        <div *ngIf="DOB.touched && DOB.hasError('required')">
+          <small>*Required</small>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="address" formGroupName="address">
+    <h3>Address</h3>
+
+    <div class="form-field">
+      <label for="Street">Street: </label>
+      <input type="text" formControlName="street" id="Street" />
+      <ng-container *ngIf="registrationForm.get('address.street') as street">
+        <div
+          class="error"
+          *ngIf="street.touched && street.hasError('required')"
+        >
+          <small>*Required</small>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="form-field">
+      <label for="City">City: </label>
+      <input type="text" formControlName="city" id="City" />
+      <ng-container *ngIf="registrationForm.get('address.city') as city">
+        <div class="error" *ngIf="city.touched && city.hasError('required')">
+          <small>*Required</small>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="form-field">
+      <label for="count">Country: </label>
+      <input type="text" formControlName="country" id="count" />
+      <ng-container *ngIf="registrationForm.get('address.country') as country">
+        <div
+          class="error"
+          *ngIf="country.touched && country.hasError('required')"
+        >
+          <small>*Required</small>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="form-field">
+      <label for="State">State: </label>
+      <select class="st" id="State" formControlName="state">
+        <option disabled selected>Choose...</option>
+        <option value="Kpk">KPK</option>
+        <option value="Sindh">Sindh</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Balochistan">Balochistan</option>
+      </select>
+      <ng-container *ngIf="registrationForm.get('address.state') as state">
+        <div class="error" *ngIf="state.touched && state.hasError('required')">
+          <small>*Select a State</small>
+        </div>
+      </ng-container>
+    </div>
+    <br />
+
+    <label for="zip">Zip Code: </label>
+    <input
+      type="number"
+      formControlName="zip"
+      id="zip"
+      placeholder="Zip Code"
+    />
+  </div>
+  <div class="two-col">
+    <label for="phone">Phone: </label>
+    <input
+      type="text"
+      id="phone"
+      maxlength="13"
+      placeholder="(0000) 00000"
+      formControlName="phone"
+      (keypress)="allowOnlyDigits($event)"
+    />
+
+    <ng-container *ngIf="registrationForm.get('phone') as phone">
+      <div
+        class="error-phone"
+        *ngIf="phone.touched && phone.hasError('required')"
+      >
+        <small>*Required</small>
+      </div>
+    </ng-container>
+  </div>
+  <div class="two-col">
+    <input id="terms" type="checkbox" value="true" formControlName="checkbox" />
+    <label for="terms"
+      ><a href="https://www.google.com" target="_blank"
+        >Terms and Conditions</a
+      ></label
+    >
+    <ng-container *ngIf="registrationForm.get('checkbox') as checkbox">
+      <div
+        class="error-checkbox"
+        *ngIf="checkbox.touched && checkbox.hasError('required')"
+      >
+        <small>*Please read Terms and Conditions</small>
+      </div>
+    </ng-container>
+  </div>
+  <div>
+    <input type="submit" />
+  </div>
+</form>
