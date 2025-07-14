@@ -1,0 +1,54 @@
+.about-container {
+  background-color: #121212;
+  color: #ffffff;
+  padding: 30px;
+  font-family: sans-serif;
+}
+
+.docs {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.content p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.list ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.list ul li a {
+  text-decoration: none;
+  color: #bbbbbb;
+  transition: color 0.3s ease;
+}
+
+.list ul li a:hover {
+  color: #ffffff;
+}
+
+.list i {
+  margin-right: 8px;
+}
+.list i {
+  color: #ffffff;
+}
+.list ul li a {
+  color: #bbbbbb;
+}
+
+.list ul li a:hover {
+  color: #ffffff;
+}
+
+.list i {
+  color: #ffffff;
+}
