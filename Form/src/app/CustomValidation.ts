@@ -14,15 +14,14 @@ export class CustomValidators {
 
     return age < 18 ? { isUnderAge: true } : null;
   }
-  static nameValidator(username: any) {
+  static nameValidator(username: any): ValidationErrors | null {
     const notValid = ['farhankhan', 'farhankhan717', 'farhan1122']; //instead of API call using an array for now
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (notValid.includes(username)) {
-          console.log('Service');
-          resolve({ checkUsername: true });
-        } else resolve(null);
-      }, 2000);
+          reject();
+        } else resolve({ username: false });
+      }, 5000);
     });
   }
 }
