@@ -1,11 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  FormControl,
-} from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { CustomValidators } from '../CustomValidation';
 
@@ -16,7 +11,6 @@ import { CustomValidators } from '../CustomValidation';
   styleUrl: './reactive-form.css',
 })
 export class ReactiveForm {
-  private fb = inject(FormBuilder);
   registrationForm!: FormGroup;
 
   ngOnInit() {
@@ -26,7 +20,11 @@ export class ReactiveForm {
         Validators.minLength(4),
       ]),
       lastName: new FormControl(''),
-      userName: new FormControl('', Validators.required),
+      userName: new FormControl(
+        '',
+        Validators.required,
+        CustomValidators.nameValidator()
+      ),
       gender: new FormControl('male'),
       email: new FormControl('', [Validators.email, Validators.required]),
       DOB: new FormControl('', [

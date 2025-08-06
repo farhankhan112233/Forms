@@ -41,7 +41,7 @@
         <div *ngIf="username.hasError('required') && username.touched">
           <small>*Required</small>
         </div>
-        <div *ngIf="registrationForm.get('userName').hasError('nameValidator')">
+        <div *ngIf="username.hasError('usernameTaken')">
           <small>*Username is taken</small>
         </div>
       </ng-container>
