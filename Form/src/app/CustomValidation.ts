@@ -1,4 +1,9 @@
-import { AbstractControl, ValidationErrors } from '@angular/forms';
+import {
+  AbstractControl,
+  AsyncValidatorFn,
+  ValidationErrors,
+} from '@angular/forms';
+import { delay, map, of } from 'rxjs';
 
 export class CustomValidators {
   static isUnderAge(control: AbstractControl): ValidationErrors | null {
@@ -14,15 +19,16 @@ export class CustomValidators {
 
     return age < 18 ? { isUnderAge: true } : null;
   }
-  static nameValidator(username: any) {
-    const notValid = ['farhankhan', 'farhankhan717', 'farhan1122']; //instead of API call using an array for now
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (notValid.includes(username)) {
-          console.log('Service');
-          resolve({ checkUsername: true });
-        } else resolve(null);
-      }, 2000);
-    });
+  static nameValidator(): AsyncValidatorFn {
+    const notValid = ['farhankhan', 'farhankhan717', 'farhan1122'];
+
+    return (control: AbstractControl) => {
+      return of(notValid.includes(control.value)).pipe(
+        delay(5000),
+        map((isTaken) => {
+          return isTaken ? { usernameTaken: true } : null;
+        })
+      );
+    };
   }
 }

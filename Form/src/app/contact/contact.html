@@ -4,10 +4,41 @@
     We'd love to hear from you. Fill out the form below to get in touch.
   </p>
 
-  <form class="contact-form">
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea rows="5" placeholder="Your Message" required></textarea>
+  <form class="contact-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Your Name" formControlName="name" />
+    <div
+      *ngIf="
+        form.get('name').hasError('required') &&
+        form.get('name').touched &&
+        form.get('name').dirty
+      "
+    >
+      <small>*Name is Required</small>
+    </div>
+    <input type="email" placeholder="Your Email" formControlName="email" />
+    <div
+      *ngIf="
+        form.get('email').hasError('required') &&
+        form.get('email').touched &&
+        form.get('email').dirty
+      "
+    >
+      <small>*Email is Required</small>
+    </div>
+    <textarea
+      rows="5"
+      placeholder="Your Message"
+      formControlName="message"
+    ></textarea>
+    <div
+      *ngIf="
+        form.get('message').hasError('required') &&
+        form.get('message').touched &&
+        form.get('message').dirty
+      "
+    >
+      <small>*Message is Required</small>
+    </div>
     <button type="submit">Send Message</button>
   </form>
 </div>
